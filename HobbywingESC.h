@@ -15,12 +15,12 @@
 class HobbywingESC
 {
   public:
-    
-    
-    
+    HobbywingESC(int pin);
+    void arm();
+    void throttle(int val);
     
   private:
-  
+    int _val;
   
   
 };

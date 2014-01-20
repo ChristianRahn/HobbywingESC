@@ -11,3 +11,30 @@
 #include "Arduino.h"
 #include "HobbywingESC.h"
 
+
+HobbywingESC::HobbywingESC(int pin) 
+{
+  pinMode(pin, output);
+  _pin = pin;
+}
+
+void HobbywingESC::arm()
+{
+_time = millis();
+  if (_time < 2000) {
+    digitalWrite(_pin, 10);
+    delay(2000);
+    }
+  else {digitalWrite(50);}
+}
+
+void HobbywingESC::throttle(int val) {
+  _val = val;
+  if (_val <181 && _val>50) {
+    digitalWrite(_pin, _val);
+    }
+  else {
+    Serial.println("Throttle out of bounds.");
+    }
+}
+
